@@ -198,20 +198,11 @@ def normalize_answer(s):
     def white_space_fix(text):
         return ' '.join(text.split())
 
-    def remove_punc(text):
-        exclude = set(string.punctuation)
-        return ''.join(ch for ch in text if ch not in exclude)
-
     def lower(text):
         return text.lower()
 
-    def remove_specialchar(text):
-        char_to_replace = {'_': ' ', '" ': '"',' - ':'-', ' – ':'–','° C': '°C', ' × ': '×', '″': ' ″', '′ ': '′', " ' ": "'", '° B':'°B', '° F': '°F', ' ° ': '°', '( ' : '(', ' )':')', '− ': '−', '– ':'–', ' / ': '/', '%': '%', '‰':' ‰', '[ ':'[', '[':' [', ' ]':']', ']':'] ',' ! ':'!',';':' ;', ' , ': ', ', ' "': '"', ' : ':':', ': ':':', ' ... ':'...', ' . ': '. ', '.':' .','= ':'=', ' ”':'”', '— ':'—', '& ':'&', ' – ':'–', ' ,':',', '- ':'-', ' +':'+', ' ?':'?'}
-        for k, v in char_to_replace.items():
-            text = text.replace(k, v)
-        return text
-    # return white_space_fix(remove_punc(lower(remove_specialchar(s))))
-    return white_space_fix((lower(remove_specialchar(s))))
+
+    return white_space_fix(lower(s))
 
 
 
