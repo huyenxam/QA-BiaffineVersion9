@@ -26,8 +26,10 @@ def evaluate(predictions, max_char_len, max_seq_length, mode):
         f1_idx = [0]
         extract_match_idx = [0]
         for lb in labels:
-
-            ground_truth = lb[3]
+            start = int(lb[1])
+            end = int(lb[2])
+            ground_truth = " ".join(context[start:end+1])
+            # ground_truth = lb[3]
             
             start_pre = int(predictions[i][1])
             end_pre = int(predictions[i][2])
